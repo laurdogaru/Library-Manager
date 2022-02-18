@@ -84,14 +84,12 @@ public class Biblioteca {
     }
     /*cartile sau clientii sunt introdusi intr-un TreeSet, care este dupa afisat*/
     public void sorteazaCarti() {
-        TreeSet<Carte> set = new TreeSet<>();
-        carti.forEach(i -> set.add(i));
+        TreeSet<Carte> set = new TreeSet<>(carti);
         set.forEach(i -> System.out.println(i.getTitlu()));
     }
 
     public void sorteazaClienti() {
-        TreeSet<Client> set = new TreeSet<>();
-        set.addAll(clienti);
+        TreeSet<Client> set = new TreeSet<>(clienti);
         set.forEach(i -> System.out.println(i.getNume()));
     }
 
@@ -139,6 +137,9 @@ public class Biblioteca {
 
     public void returneazaCarte(int cod) {
         Carte carte = carti.stream().filter(i -> i.getCod() == cod).findAny().orElse(null);
+        if(carte == null) {
+            return;
+        }
         int a = carte.getProprietari().size();
         //nu se poate returna o carte atunci cand lista sa de proprietari este goala sau ultimul
         //proprietar nu este clientul curent

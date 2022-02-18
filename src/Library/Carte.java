@@ -10,7 +10,11 @@ public class Carte implements Comparable<Carte> {
     private int nrPagini;
     private boolean disponibil;
     private static int cod_aux; //ajuta la atribuirea codului la creare
-    private ArrayList<Client> proprietari = new ArrayList<>();//retine proprietarii cartii de-a lungul timpului
+    private ArrayList<Client> proprietari;//retine proprietarii cartii de-a lungul timpului
+
+    public Carte() {
+        proprietari = new ArrayList<>();
+    }
 
     public int getCod() { return this.cod; }
     public String getTitlu() { return this.titlu; }
