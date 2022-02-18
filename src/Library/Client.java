@@ -30,10 +30,16 @@ public class Client implements Comparable<Client> {
         if( !(o instanceof Client) ) return false;
 
         Client c = (Client)o;
-        if( (this.nume.compareTo(c.getNume()) == 0) )
+        if( (this.nume.compareTo(c.getNume()) == 0) ) {
             return true;
-        else
+        } else {
             return false;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return nume.hashCode();
     }
 }
 

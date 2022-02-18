@@ -27,8 +27,8 @@ public class Carte implements Comparable<Carte> {
     public void setNrPagini(int nrPagini) { this.nrPagini = nrPagini; }
     public void setDisponibil(boolean disponibil) { this.disponibil = disponibil; }
 
-    @Override
     //pentru implementarea TreeSet-ului
+    @Override
     public int compareTo(Carte c) {
         return this.nrPagini - c.nrPagini;
     }
@@ -40,13 +40,29 @@ public class Carte implements Comparable<Carte> {
         s+="Autor: " + autor + "\n";
         s+="Gen: " + gen + "\n";
         s+="Numar pagini: " + nrPagini + "\n";
-        if( disponibil == true ) {
+        if(disponibil) {
             s+="Este disponibila";
-        }
-        else {
+        } else {
             s+="Nu este disponibila";
         }
         return s;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o == null) {
+            return false;
+        }
+        if(!(o instanceof Carte)) {
+            return false;
+        }
+        Carte carte = (Carte) o;
+        return titlu.equals(carte.titlu);
+    }
+
+    @Override
+    public int hashCode() {
+        return titlu.hashCode();
     }
 
 }
